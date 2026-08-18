@@ -13,14 +13,12 @@ def make_frame(t):
     s = int(remain % 60)
     timestr = f"{m:02d}:{s:02d}"
 
-    frame = bg_clip.get_frame(t)   # numpy数组
+    frame = bg_clip.get_frame(t)
     img = Image.fromarray(frame)
     draw = ImageDraw.Draw(img)
 
-    # 居中绘制倒计时
     draw.text((W*0.5, H*0.08), timestr, fill = "black", font_size = 60, anchor = "mm")
 
-    # ⚠️重点：PIL图像转回numpy数组再return
     return np.array(img)
 
 
